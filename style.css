@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+:root{
+  --white: #ffffff;
+  --greyish-white: #ecf0f1;
+  --border: #c7c7c7;
+  --border-light: #e0e0e0;
+  --green-theme: #00ac47;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.menu-bar {
+  height: 3.2rem;
+  background: #00ac47;
+  display: flex;
+  align-items: end;
+  padding-left: 1.5rem;
+}
+.menu-bar > span{
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.menu-bar > span:hover{
+  background:#00943e;
+}
+.menu-bar > span:nth-child(2){
+  background: var(--greyish-white);
+  color: var(--green-theme);
+}
+.tool-bar {
+  height: 2.5rem;
+  background: var(--greyish-white);
+  padding-inline: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.tool{
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.tool>span{
+  font-size: 22px;
+}
+.tool:hover{
+  background: lightgray;
+  transition: all .2s;
+}
+.active-tool{
+  background: lightgray;
+}
+.tool-bar>select{
+  height: 24px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+.formula-position-bar {
+  height: 2.2rem;
+  background: var(--greyish-white);
+  padding-inline: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.position{
+  width: 74px;
+  height: 24px;
+  border-radius: 2px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+}
+.formula-div{
+  flex-grow: 1;
+}
+.formula-div>input{
+  outline: none;
+  width: 100%;
+  height: 24px;
+  border-radius: 2px;
+  padding-inline: 4px;
+  border: 1px solid var(--border);
+}
+#dataContainer {
+  height: calc(100vh - 3.2rem - 2.5rem - 2.2rem - 3rem);
+  overflow: scroll;
+}
+#footSection {
+  height: 3rem;
+  height: 2.5rem;
+  border: 1px solid red;
+}
+#dataHead {
+  height: 26px;
+  width: fit-content;
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 1;
+}
+#sNo{
+  position: sticky;
+  left: 0;
+}
+#cellContainer{
+  width: fit-content;
+}
+#dataBody {
+  height:  100%;
+  display: flex;
+}
+
+.header-cell{
+  min-width: 100px;
+  min-height: 26px;
+  font-size: 14px;
+  font-weight: lighter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+.corner-blankCell{
+  position: sticky;
+  left: 0;
+  min-width: 46px;
+  border: 1px solid var(--border);
+  border-right: 3px solid var(--border);
+  border-bottom: 3px solid var(--border);
+  background-color: var(--white);
+}
+.sNo-cells{
+  min-width: 46px;
+  min-height: 26px;
+  font-size: 14px;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background-color: var(--white);
+}
+.row{
+  min-height: 26px;
+  display: flex;
+
+}
+.cell{
+  min-width: 100px;
+  border: 1px solid var(--border-light);
+}
+
+@media screen and (max-width:426px) {
+  .menu-bar, .tool-bar{
+    & ::-webkit-scrollbar{
+      display: none;
+    }
+    overflow-x: scroll;
+  }
+}
