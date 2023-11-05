@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Google Sheet Clone</title>
-    <link rel="shortcut icon" href="./Assets/Microsoft_Excel-Logo.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="./Assets/Microsoft_Excel-Logo.png"
+      type="image/x-icon"
+    />
     <!-- css file -->
     <link rel="stylesheet" href="style.css" />
     <!-- material icon Links  -->
@@ -15,6 +19,18 @@
   </head>
   <body>
     <section class="container">
+      <div
+        class="title"
+        style="
+          background-color: #00ac47;
+          color: white;
+          padding-top: 8px;
+          text-align: center;
+          font-family: serif;
+        "
+      >
+        Untitled spreadsheet
+      </div>
       <div class="menu-bar">
         <span>File</span>
         <span>Home</span>
@@ -24,57 +40,100 @@
         <span>Help</span>
       </div>
       <div class="tool-bar">
-        <select name="FontFamily">
-          <option value="monospace">MonoSpace</option>
-          <option value="sans-serif">Sans-Serif</option>
-        </select>
-        <select name="FontSize">
-          <option value="12">12</option>
-          <option value="14">14</option>
-          <option value="16">16</option>
-          <option value="18">18</option>
-          <option value="20">20</option>
-          <option value="22">22</option>
-          <option value="24">24</option>
-        </select>
-        <div class="tool">
-          <span class="material-symbols-outlined"> format_bold </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> format_italic </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> format_underlined </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> format_align_left </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> format_align_center </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> format_align_right </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> format_color_text </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> format_color_fill </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> cloud_download </span>
-        </div>
-        <div class="tool">
-          <span class="material-symbols-outlined"> cloud_upload </span>
-        </div>
+        <form id="form" onchange="onFormChange()">
+          <select id="fontfamily" name="fontfamily">
+            <option value="sans">Sans</option>
+            <option value="monospace">MonoSpace</option>
+            <option value="serif">Serif</option>
+            <option value="sans-serif">Sans-Serif</option>
+          </select>
+          <select id="fontsize" name="fontsize">
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="22">22</option>
+            <option value="24">24</option>
+          </select>
+
+          <input type="checkbox" id="bold" name="bold" class="hidden-input" />
+          <label for="bold" class="tool material-symbols-outlined">
+            format_bold
+          </label>
+
+          <input type="checkbox" id="italic" name="italic" class="hidden-input" />
+          <label for="italic" class="tool material-symbols-outlined">
+            format_italic
+          </label>
+
+          <input type="checkbox" id="underlined" name="underlined" class="hidden-input" />
+          <label for="underlined" class="tool material-symbols-outlined">
+            format_underlined
+          </label>
+
+          <input type="radio" id="left" value="left" name="textalign" class="hidden-input" />
+          <label for="left" class="tool material-symbols-outlined">
+            format_align_left
+          </label>
+
+          <input
+            type="radio"
+            id="center"
+            name="textalign" value="center"
+            class="hidden-input"
+          />
+          <label for="center" class="tool material-symbols-outlined">
+            format_align_center
+          </label>
+
+          <input
+            type="radio"
+            id="right"
+            name="textalign" value="right"
+            class="hidden-input"
+          />
+          <label for="right" class="tool material-symbols-outlined">
+            format_align_right
+          </label>
+
+          <input
+            type="color"
+            id="textcolor"
+            name="textcolor"
+            value="#000000"
+            class="hidden-input"
+          />
+          <label for="textcolor" class="tool material-symbols-outlined">
+            format_color_text
+          </label>
+
+          <input
+            type="color"
+            id="bgcolor"
+            value="#ffffff"
+            name="bgcolor"
+            class="hidden-input"
+          />
+          <label for="bgcolor" class="tool material-symbols-outlined">
+            format_color_fill
+          </label>
+
+          <div class="tool" style="margin-inline: 10px;">
+            <span class="material-symbols-outlined"> cloud_download </span>
+          </div>
+          <div class="tool">
+            <span class="material-symbols-outlined"> cloud_upload </span>
+          </div>
+        </form>
       </div>
       <div class="formula-position-bar">
-        <div class="position"></div>
-        <span class="material-symbols-outlined">
+        <div class="position" style="color: #616465"></div>
+        <span class="material-symbols-outlined" style="color: #616465">
           function
-          </span>
+        </span>
         <div class="formula-div">
-          <input type="text">
+          <input type="text" />
         </div>
       </div>
       <div id="dataContainer">
@@ -84,7 +143,31 @@
           <div id="cellContainer"></div>
         </div>
       </div>
-      <div id="footSection"></div>
+      <div id="sheetBar">
+        <div class="scroller-add-btn">
+          <div
+            class="left-scroll material-symbols-outlined"
+            style="font-size: 30px"
+          >
+            arrow_left
+          </div>
+          <div
+            class="right-scroll material-symbols-outlined"
+            style="font-size: 30px"
+          >
+            arrow_right
+          </div>
+        </div>
+        <div
+          class="add-sheet-btn material-symbols-outlined"
+          style="color: #00ac47"
+        >
+          add_circle
+        </div>
+        <div class="sheets">
+          <div>Sheet 1</div>
+        </div>
+      </div>
     </section>
 
     <!-- js file -->

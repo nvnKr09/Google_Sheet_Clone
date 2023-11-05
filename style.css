@@ -6,6 +6,7 @@
 }
 :root{
   --white: #ffffff;
+  --icon-color: #616465;
   --greyish-white: #ecf0f1;
   --border: #c7c7c7;
   --border-light: #e0e0e0;
@@ -17,7 +18,7 @@
   overflow: hidden;
 }
 .menu-bar {
-  height: 3.2rem;
+  height: 2.8rem;
   background: #00ac47;
   display: flex;
   align-items: end;
@@ -41,11 +42,21 @@
   background: var(--greyish-white);
   padding-inline: 2rem;
   display: flex;
+  align-items:end;
+}
+#form {
+  display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 10px;
 }
 .tool{
-  padding: 4px;
+  height: 31px;
+  width: 31px;
+  padding: 3px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: #616465;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -56,16 +67,28 @@
   font-size: 22px;
 }
 .tool:hover{
-  background: lightgray;
+  background: #d3e3fd;
+  color: #173059;
   transition: all .2s;
 }
 .active-tool{
-  background: lightgray;
+  background: #d3e3fd;
+  color: #173059;
 }
-.tool-bar>select{
+.tool-bar select{
+  color: #616465;
   height: 24px;
   border: 1px solid var(--border);
   border-radius: 2px;
+}
+/* hiding inputs */
+.hidden-input{
+  height: 0;
+  width: 0;
+}
+.hidden-input:checked + label{
+  background: #d3e3fd;
+  color: #173059;
 }
 .formula-position-bar {
   height: 2.2rem;
@@ -98,13 +121,54 @@
   border: 1px solid var(--border);
 }
 #dataContainer {
-  height: calc(100vh - 3.2rem - 2.5rem - 2.2rem - 3rem);
+  height: calc(100vh - 4.3rem - 2.5rem - 2.2rem - 2.4rem);
   overflow: scroll;
 }
-#footSection {
-  height: 3rem;
-  height: 2.5rem;
-  border: 1px solid red;
+#sheetBar {
+  height: 2.2rem;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--greyish-white);
+}
+.scroller-add-btn{
+  /* width: 87px; */
+  display: flex;
+  align-items: center;
+}
+.sheets{
+  height: 100%;
+  /* flex-grow: 1; */
+  width: fit-content;
+  padding-inline: 4px;
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.left-scroll,
+.right-scroll,
+.add-sheet-btn{
+  cursor: pointer;
+}
+.left-scroll:active,
+.right-scroll:active,
+.add-sheet-btn:active{
+  border: 1px solid;
+  border-radius: 50%;
+}
+.sheets>div{
+  border-bottom: 3px solid #00ac47;
+  padding: 4px 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.sheets>div:hover{
+  border-bottom: 3px solid #00ac47;
+  padding: 4px 8px;
+  background: var(--border-light);
 }
 #dataHead {
   height: 26px;
@@ -164,6 +228,8 @@
 }
 .cell{
   min-width: 100px;
+  padding: 2px 3px;
+  font-size: 12px;
   border: 1px solid var(--border-light);
 }
 
